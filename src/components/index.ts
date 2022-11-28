@@ -1,4 +1,6 @@
 import RoofButton from './RoofButton'
+import RoofIcon from './RoofIcon'
+import RoofImageLoader from './RoofImageLoader'
 import {
 	RoofHeaderText,
 	RoofNormalText
@@ -25,5 +27,7 @@ export {
 	RoofKeyboard,
 	RoofRadio,
 	RoofFormWrapper,
-	RoofFileAttachment
+	RoofFileAttachment,
+	RoofIcon,
+	RoofImageLoader
 }

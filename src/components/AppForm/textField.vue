@@ -1,8 +1,8 @@
 <template>
   <div class="flex w-full flex-col relative">
-    <roof-normal-text v-if="hasTitle" customClass="!pb-2">
+    <app-normal-text v-if="hasTitle" customClass="!pb-2">
       <slot name="title" />
-    </roof-normal-text>
+    </app-normal-text>
     <div
       class="w-full flex flex-row items-center"
       :tabindex="tabIndex"
@@ -13,7 +13,9 @@
       <div
         :class="`flew-grow w-full space-x-1 flex-row flex items-center justify-between ${padding} ${customClass}  bg-grayBackground rounded ${
           isFocused ? 'border-primaryOrange border-[1px]' : ''
-        } ${validationStatus == false ? '!border-primaryRed !border-[1px]' : ''}`"
+        } ${
+          validationStatus == false ? '!border-primaryRed !border-[1px]' : ''
+        }`"
       >
         <slot name="inner-prefix" />
         <input
@@ -30,34 +32,40 @@
           :class="` text-lightBlack flex-grow bg-transparent placeholder-primaryGray focus input w-full focus:outline-none  `"
         />
         <slot name="inner-suffix" />
-        <roof-icon
+        <app-icon
           :name="`${fieldType == 'password' ? 'show' : 'hide'}`"
           :customClass="`${fieldType == 'password' ? 'h-[12px]' : 'h-[15px]'}`"
           v-if="type == 'password'"
           @click.stop="
-            fieldType == 'password' ? (fieldType = 'text') : (fieldType = 'password')
+            fieldType == 'password'
+              ? (fieldType = 'text')
+              : (fieldType = 'password')
           "
         />
       </div>
       <slot name="outer-suffix" />
     </div>
-    <div v-if="!validationStatus" class="w-full flex flex-row pt-1 justify-start">
-      <roof-normal-text :customClass="' text-left'" :color="`text-primaryRed`">
+    <div
+      v-if="!validationStatus"
+      class="w-full flex flex-row pt-1 justify-start"
+    >
+      <app-normal-text :customClass="' text-left'" :color="`text-primaryRed`">
         {{ errorMessage }}
-      </roof-normal-text>
+      </app-normal-text>
     </div>
   </div>
 </template>
 <script lang="ts">
-import RoofNormalText from "../RoofTypography/normalText.vue";
+import AppNormalText from "../AppTypography/normalText.vue";
 import { defineComponent, onMounted, ref, watch } from "vue";
-import { FormRule, Logic } from "@squareroof/logic";
-import RoofIcon from "../RoofIcon";
+import { Logic } from "../../composable";
+import { FormRule } from "../../types";
+import AppIcon from "../AppIcon";
 
 export default defineComponent({
   components: {
-    RoofNormalText,
-    RoofIcon,
+    AppNormalText,
+    AppIcon,
   },
   props: {
     padding: {
@@ -104,7 +112,7 @@ export default defineComponent({
       default: false,
     },
   },
-  name: "RoofTextField",
+  name: "AppTextField",
   emits: ["update:modelValue"],
   setup(props: any, context: any) {
     const content = ref("");
@@ -187,7 +195,9 @@ export default defineComponent({
         validationStatus.value = true;
       } else {
         validationStatus.value = false;
-        errorMessage.value = `${props.name} must be more than ${count - 1} characters`;
+        errorMessage.value = `${props.name} must be more than ${
+          count - 1
+        } characters`;
       }
     };
 
@@ -196,7 +206,9 @@ export default defineComponent({
         validationStatus.value = true;
       } else {
         validationStatus.value = false;
-        errorMessage.value = `${props.name} must be less than ${count + 1} characters`;
+        errorMessage.value = `${props.name} must be less than ${
+          count + 1
+        } characters`;
       }
     };
 
@@ -271,7 +283,11 @@ export default defineComponent({
 
       evt = evt ? evt : window.event;
       var charCode = evt.which ? evt.which : evt.keyCode;
-      if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
+      if (
+        charCode > 31 &&
+        (charCode < 48 || charCode > 57) &&
+        charCode !== 46
+      ) {
         evt.preventDefault();
       } else {
         return true;

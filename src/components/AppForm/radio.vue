@@ -11,26 +11,30 @@
           <span class="h-full flex items-start justify-center">
             <span
               :class="`h-[11px] w-[11px] rounded-full ${
-                selectedOption == option.key ? 'bg-primaryOrange' : 'bg-[#D9D9D9]'
+                selectedOption == option.key
+                  ? 'bg-primaryOrange'
+                  : 'bg-[#D9D9D9]'
               }`"
             >
             </span>
           </span>
-          <roof-normal-text>
+          <app-normal-text>
             {{ option.value }}
-          </roof-normal-text>
+          </app-normal-text>
         </div>
         <template v-if="option.isImage != true">
-          <roof-normal-text
+          <app-normal-text
             custom-class="!font-semibold"
             color="!text-primaryOrange"
             v-if="!option.hasIcon"
           >
             {{ option.extras }}
-          </roof-normal-text>
-          <roof-icon
+          </app-normal-text>
+          <app-icon
             :name="option.extras || ''"
-            :custom-class="`${option.extras == 'mastercard' ? 'h-[16px]' : 'h-[11px]'}`"
+            :custom-class="`${
+              option.extras == 'mastercard' ? 'h-[16px]' : 'h-[11px]'
+            }`"
             v-if="option.hasIcon && option.extras"
           />
         </template>
@@ -41,15 +45,15 @@
   </div>
 </template>
 <script lang="ts">
-import RoofNormalText from "../RoofTypography/normalText.vue";
+import AppNormalText from "../AppTypography/normalText.vue";
 import { onMounted, ref, watch } from "vue";
-import { SelectOption } from "@squareroof/logic";
-import RoofIcon from "../RoofIcon";
+import { SelectOption } from "../../types";
+import AppIcon from "../AppIcon";
 
 export default {
   components: {
-    RoofNormalText,
-    RoofIcon,
+    AppNormalText,
+    AppIcon,
   },
   props: {
     options: {
@@ -60,7 +64,7 @@ export default {
       required: false,
     },
   },
-  name: "RoofRadio",
+  name: "AppRadio",
   emits: ["update:modelValue"],
   setup(props: any, context: any) {
     const selectedOption = ref("");

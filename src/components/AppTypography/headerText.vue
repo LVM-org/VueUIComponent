@@ -27,6 +27,6 @@ export default {
       default: "",
     },
   },
-  name: "RoofHeaderText",
+  name: "AppHeaderText",
 };
 </script>

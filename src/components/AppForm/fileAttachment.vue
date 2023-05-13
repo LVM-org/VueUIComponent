@@ -39,26 +39,26 @@
           :multiple="isMultiple"
           @change="uploadHandler"
         />
-        <roof-icon :name="`${iconName}`" :customClass="'h-[15px]'" />
-        <roof-normal-text
+        <app-icon :name="`${iconName}`" :customClass="'h-[15px]'" />
+        <app-normal-text
           color="text-paragraphTextLight"
           customClass="w-full text-left line-clamp-1"
         >
           {{ selectedFileName != "" ? selectedFileName : placeholder }}
-        </roof-normal-text>
+        </app-normal-text>
       </div>
     </template>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "vue";
-import RoofNormalText from "../RoofTypography/normalText.vue";
-import RoofIcon from "../RoofIcon/index.vue";
+import AppNormalText from "../AppTypography/normalText.vue";
+import AppIcon from "../AppIcon/index.vue";
 
 export default defineComponent({
   components: {
-    RoofNormalText,
-    RoofIcon,
+    AppNormalText,
+    AppIcon,
   },
   props: {
     placeholder: {
@@ -86,7 +86,7 @@ export default defineComponent({
     },
   },
   emits: ["update:modelValue", "update:localFileUrl", "update:base64Data"],
-  name: "RoofFileAttachment",
+  name: "AppFileAttachment",
   setup(props: any, context: any) {
     const files = ref<FileList>();
 

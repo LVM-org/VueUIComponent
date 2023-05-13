@@ -13,7 +13,7 @@ export default defineComponent({
       required: true,
     },
   },
-  name: "RoofFormWrapper",
+  name: "AppFormWrapper",
   setup(props: any) {
     const formWrapper = ref<any>(null);
 

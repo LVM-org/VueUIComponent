@@ -2,7 +2,7 @@
 	"compilerOptions": {
 	  "target": "esnext",
 	  "module": "esnext",
-	  "strict": true,
+	  "strict": false,
 	  "jsx": "preserve",
 	  "importHelpers": true,
 	  "resolveJsonModule": true,
@@ -10,10 +10,11 @@
 	  "skipLibCheck": true,
 	  "esModuleInterop": true,
 	  "allowSyntheticDefaultImports": true,
-	  "sourceMap": true,
+	  "noImplicitAny": false,
+	  "sourceMap": true, 
 	  "baseUrl": ".",
 	  "types": [
-		"jest"
+		"jest", "node"
 	  ],
 	  "paths": {
 		"@/*": [
@@ -32,7 +33,8 @@
 	  "src/**/*.tsx",
 	  "src/**/*.vue",
 	  "tests/**/*.ts",
-	  "tests/**/*.tsx"
+	  "tests/**/*.tsx",
+	  ".d.ts"
 	],
 	"exclude": [
 	  "node_modules"

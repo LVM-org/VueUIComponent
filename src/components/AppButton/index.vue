@@ -26,6 +26,6 @@ export default defineComponent({
       default: "py-2 px-4 ",
     },
   },
-  name: "RoofButton",
+  name: "AppButton",
 });
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div :class="`flex flex-col space-y-2 ${defaultSize} `">
-    <roof-normal-text v-if="hasTitle">
+    <app-normal-text v-if="hasTitle">
       <slot name="title" />
-    </roof-normal-text>
+    </app-normal-text>
     <div
       :class="`flex relative flex-row items-center space-x-1 justify-between w-full rounded ${customClass} bg-grayBackground ${paddings}`"
       :id="'container' + tabIndex"
@@ -25,7 +25,7 @@
         disabled
         :class="` text-lightBlack flex-grow bg-transparent placeholder-primaryGray focus input w-full focus:outline-none  focus:border-primaryOrange`"
       />
-      <roof-icon
+      <app-icon
         @click="
           showOption = true;
           isFocused = true;
@@ -35,7 +35,7 @@
       />
     </div>
   </div>
-  <roof-modal
+  <app-modal
     :canClose="true"
     custom-class="mdlg:!hidden"
     :close="
@@ -49,34 +49,42 @@
       @click.stop="true"
       class="rounded-t-2xl flex flex-col space-y-2 bg-white w-full absolute overflow-y-auto h-[50%] bottom-0 left-0 pb-3 px-3 lg:!text-sm mdlg:!text-[12px] text-xs"
     >
-      <div class="flex items-center justify-center sticky top-0 bg-white w-full pt-3">
+      <div
+        class="flex items-center justify-center sticky top-0 bg-white w-full pt-3"
+      >
         <span class="bg-gray-700 rounded-full w-[30px] h-[4px]"></span>
       </div>
       <div class="w-full pt-1 sticky top-[18px] bg-white" v-if="autoComplete">
-        <roof-text-field placeholder="Search" v-model="searchValue"> </roof-text-field>
+        <app-text-field placeholder="Search" v-model="searchValue">
+        </app-text-field>
       </div>
-      <roof-radio :options="selectOptions" v-model="selectedKey" @click.stop="true" />
+      <app-radio
+        :options="selectOptions"
+        v-model="selectedKey"
+        @click.stop="true"
+      />
     </div>
-  </roof-modal>
+  </app-modal>
 </template>
 
 <script lang="ts">
-import { Logic, SelectOption } from "@squareroof/logic";
+import { Logic } from "../../composable";
+import { SelectOption } from "../../types";
 import { capitalize, defineComponent, onMounted, ref, watch } from "vue";
-import RoofIcon from "../RoofIcon/index.vue";
-import RoofModal from "../RoofModal";
-import RoofNormalText from "../RoofTypography/normalText.vue";
-import RoofTextField from "./textField.vue";
-import RoofRadio from "./radio.vue";
+import AppIcon from "../AppIcon/index.vue";
+import AppModal from "../AppModal";
+import AppNormalText from "../AppTypography/normalText.vue";
+import AppTextField from "./textField.vue";
+import AppRadio from "./radio.vue";
 
 export default defineComponent({
-  name: "RoofSelect",
+  name: "AppSelect",
   components: {
-    RoofIcon,
-    RoofNormalText,
-    RoofModal,
-    RoofTextField,
-    RoofRadio,
+    AppIcon,
+    AppNormalText,
+    AppModal,
+    AppTextField,
+    AppRadio,
   },
   props: {
     withKey: {

@@ -1,5 +1,7 @@
 <template>
-  <span> <img :src="`/images/icons/${name}.svg`" :class="`${customClass}`" /></span>
+  <span>
+    <img :src="`/images/icons/${name}.svg`" :class="`${customClass}`"
+  /></span>
 </template>
 <script lang="ts">
 export default {
@@ -13,6 +15,6 @@ export default {
       required: true,
     },
   },
-  name: "RoofIcon",
+  name: "AppIcon",
 };
 </script>

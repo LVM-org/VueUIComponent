@@ -10,16 +10,16 @@
           @click="content += `${key + 1}`"
           class="w-[43px] h-[43px] rounded-full border-[1px] border-transparent hover:bg-gray-50 flex flex-row items-center justify-center"
         >
-          <roof-normal-text customClass="!text-lg">
+          <app-normal-text customClass="!text-lg">
             {{ key + 1 }}
-          </roof-normal-text>
+          </app-normal-text>
         </span>
       </div>
       <div class="col-span-4 flex flex-row items-center justify-center">
         <span
           class="w-[43px] h-[43px] rounded-full border-[1px] border-transparent hover:bg-gray-50 flex flex-row items-center justify-center"
         >
-          <roof-icon
+          <App-icon
             :name="'fingerprint'"
             :customClass="'h-[30px]'"
             v-if="hasFingerPrint"
@@ -31,7 +31,7 @@
           @click="content += `0`"
           class="w-[43px] h-[43px] rounded-full border-[1px] border-transparent hover:bg-gray-50 flex flex-row items-center justify-center"
         >
-          <roof-normal-text customClass="!text-lg"> 0 </roof-normal-text>
+          <app-normal-text customClass="!text-lg"> 0 </app-normal-text>
         </span>
       </div>
       <div class="col-span-4 flex flex-row items-center justify-center">
@@ -39,21 +39,21 @@
           @click="content = `${content.slice(0, -1)}`"
           class="w-[43px] h-[43px] rounded-full border-[1px] border-transparent hover:bg-gray-50 flex flex-row items-center justify-center"
         >
-          <roof-icon :name="'chevron-left-gray'" :customClass="'h-[15px]'" />
+          <app-icon :name="'chevron-left-gray'" :customClass="'h-[15px]'" />
         </span>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import RoofNormalText from "../RoofTypography/normalText.vue";
-import RoofIcon from "../RoofIcon";
+import AppNormalText from "../AppTypography/normalText.vue";
+import AppIcon from "../AppIcon";
 import { ref, watch } from "vue";
 
 export default {
   components: {
-    RoofNormalText,
-    RoofIcon,
+    AppNormalText,
+    AppIcon,
   },
   props: {
     padding: {
@@ -80,7 +80,7 @@ export default {
       required: false,
     },
   },
-  name: "RoofKeyboard",
+  name: "AppKeyboard",
   emits: ["update:modelValue"],
   setup(props: any, context: any) {
     const content = ref("");

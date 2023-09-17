@@ -12,7 +12,7 @@ The goal of this repository is for it to be use as a template for new UIComponen
 To start clone this repository
 
 ```
-git clone [https://drayfocus1@bitbucket.org/cc-portfolio/vueuicomponents.git](https://github.com/LVM-org/VueUIComponent.git)
+git clone https://drayfocus1@bitbucket.org/cc-portfolio/vueuicomponents.git
 ```
 
 Update the `git remote origin url` with your package repository.

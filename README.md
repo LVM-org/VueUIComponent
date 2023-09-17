@@ -52,10 +52,10 @@ To enable tailwindCSS to watch file changes
 npm run build:style:watch
 ```
 
-To publish to Ceedlab private repo
+To publish 
 
 ```
-npm publish --registry=https://npm-registry.ceedcap.io/
+npm publish 
 ```
 
 > Before attempting to publish a package, ensure you don't have not uncommited files by running `git commit add .` and you have updated the package version using `npm version patch`.
